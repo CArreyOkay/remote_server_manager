@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "windows-remote-orchestrator"
+version = "3.1.0"
+description = "Material & Futuristic Windows Enterprise Remote Orchestration Console & Elevated Server Engine"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Akshay Lalwani" },
+]
+keywords = [
+    "windows",
+    "automation",
+    "orchestration",
+    "sspi",
+    "authentication",
+    "fastapi",
+    "tkinter",
+    "iis",
+    "schtasks",
+    "nssm",
+    "venv",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Win32 (MS Windows)",
+    "Framework :: FastAPI",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Systems Administration",
+]
+
+# Client has 0 third-party pip dependencies; core dependencies are optional for headless clients.
+dependencies = []
+
+[project.optional-dependencies]
+server = [
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.23.0",
+    "pydantic>=2.0.0",
+]
+dev = [
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "httpx>=0.24.0",
+]
+all = [
+    "windows-remote-orchestrator[server,dev]",
+]
+
+[project.scripts]
+orchestrator-server = "server:main"
+orchestrator-client = "client:main"
+
+[tool.setuptools]
+py-modules = ["server", "client"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
