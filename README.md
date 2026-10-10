@@ -29,6 +29,7 @@ Manage Python runtime environments, Windows Scheduled Tasks, IIS Web Sites, and 
 Python Venvs    schtasks.exe      appcmd.exe       nssm.exe      Kernel32
 & ipykernel    (Task Scheduler)   (IIS Manager)    (Services)   (Telemetry)
 ```
+<img width="1919" height="1032" alt="image" src="https://github.com/user-attachments/assets/2277cbd9-ab69-4e02-a16e-e0a8c21ab08f" />
 
 ### Key Architectural Tenets  
 
